@@ -90,7 +90,7 @@ export default function AboutHome() {
                 My Achievements
               </h3>
               
-              <div className="grid grid-cols-2 gap-12">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 xl:gap-12">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
