@@ -51,10 +51,6 @@ export default function AboutHome() {
               About Me
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Specialized Shopify developer with expertise in building high-converting 
-              ecommerce stores and custom solutions.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
@@ -86,29 +82,25 @@ export default function AboutHome() {
                   Hello! I&apos;m a Shopify Expert
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  I specialize in creating high-converting Shopify stores that drive results. With over 5 years 
-                  of experience in ecommerce development, I&apos;ve helped businesses of all sizes build their 
-                  online presence and increase their revenue through strategic Shopify implementations.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  From custom theme development to complex Shopify Plus solutions, I focus on creating 
-                  user-friendly, fast, and conversion-optimized stores. I stay up-to-date with the latest 
-                  Shopify features, ecommerce trends, and best practices to deliver exceptional results.
+                  I am Henry, a dedicated Shopify expert, I&apos;ve successfully launched and optimized numerous 
+                  online Shopify stores that generate revenue and create exceptional user experiences. As a 
+                  Shopify expert, I focus not only on developing your online store but also on optimizing it for 
+                  speed, technical SEO, and overall performance to maximize revenue and customer lifetime value. 
                 </p>
               </div>
             </motion.div>
 
             {/* Right Column - Stats in 2x2 Grid */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-center text-2xl font-semibold text-gray-900 mb-6">
                 My Achievements
               </h3>
               
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-12">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="text-center p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-300 group"
+                    className="text-center p-8 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-300 group"
                     whileHover={{ y: -5 }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -120,10 +112,10 @@ export default function AboutHome() {
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <stat.icon size={24} />
+                      <stat.icon size={32} />
                     </motion.div>
                     <motion.div
-                      className="text-2xl font-bold text-gray-900 mb-2"
+                      className="text-4xl font-bold text-gray-900 mb-2"
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
@@ -131,7 +123,7 @@ export default function AboutHome() {
                     >
                       {stat.value}
                     </motion.div>
-                    <p className="text-gray-600 text-sm">{stat.label}</p>
+                    <p className="text-gray-600 text-md">{stat.label}</p>
                   </motion.div>
                 ))}
               </div>
