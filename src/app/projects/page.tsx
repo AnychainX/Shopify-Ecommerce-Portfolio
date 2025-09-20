@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                 <span>Back to Home</span>
               </Link>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Shopify & Ecommerce Projects</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">My Works</h1>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ProjectsPage() {
           </motion.div>
 
           {/* Projects Grid */}
-          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
                 <motion.div

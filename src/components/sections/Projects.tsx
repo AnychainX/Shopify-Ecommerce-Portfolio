@@ -67,7 +67,7 @@ export default function Projects() {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Shopify & Ecommerce Projects
+              My Works
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto">
