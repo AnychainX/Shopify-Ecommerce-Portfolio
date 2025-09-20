@@ -115,7 +115,7 @@ export default function ProjectsPage() {
                   <motion.button
                     key={category}
                     onClick={() => setFilter(category)}
-                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                    className={`px-3 py-1 rounded-full font-medium transition-all duration-300 ${
                       filter === category
                         ? 'bg-blue-600 text-white shadow-lg'
                         : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'

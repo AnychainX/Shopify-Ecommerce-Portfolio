@@ -77,21 +77,24 @@ export default function Projects() {
           </motion.div>
 
           {/* Filter Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => handleFilter(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${filter === category
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          <motion.div variants={itemVariants} className="mb-8">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => handleFilter(category)}
+                  className={`px-3 py-1 rounded-full font-medium transition-all duration-300 ${
+                    filter === category
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                   }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category}
-              </motion.button>
-            ))}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Projects Grid */}
