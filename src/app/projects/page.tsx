@@ -194,16 +194,9 @@ export default function ProjectsPage() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <div className="group/desc relative">
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
-                        {project.description}
-                      </p>
-                      {/* Hover tooltip for full description */}
-                      <div className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover/desc:opacity-100 transition-opacity duration-300 pointer-events-none z-20 shadow-lg">
-                        <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900"></div>
-                        {project.description}
-                      </div>
-                    </div>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-5">
+                      {project.description}
+                    </p>
                     
                     {/* Technologies */}
                     {/* <div className="flex flex-wrap gap-1 mb-4">
