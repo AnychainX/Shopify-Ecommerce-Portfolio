@@ -4,110 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowLeft, Filter } from 'lucide-react';
 import Link from 'next/link';
-import { Project } from '@/types';
-
-const projects: Project[] = [
-  {
-    id: '1',
-    title: 'Custom Shopify Plus Store',
-    description: 'Enterprise-level Shopify Plus store with custom checkout flow, advanced product configurator, B2B wholesale portal, and multi-currency support. Integrated with ERP systems for seamless inventory management. Features custom Shopify Scripts for dynamic pricing, automated workflows, and advanced analytics dashboard.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify Plus', 'Liquid', 'JavaScript', 'Shopify Scripts', 'GraphQL', 'REST API', 'ERP Integration'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Custom Shopify Theme Development',
-    description: 'Fully responsive custom Shopify theme built from scratch with advanced filtering system, quick view functionality, mega menu navigation, and conversion-optimized design. Includes dynamic sections, customizable homepage layouts, and mobile-first approach with exceptional performance scores.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify', 'Liquid', 'CSS3', 'JavaScript', 'SCSS', 'Theme Kit', 'Shopify CLI'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: true,
-  },
-  {
-    id: '3',
-    title: 'Shopify App Development',
-    description: 'Custom Shopify app for advanced inventory management and automated product recommendations using machine learning. Features real-time synchronization, comprehensive analytics dashboard, bulk operations, and seamless integration with Shopify admin. Built with modern React and Node.js architecture.',
-    image: '/api/placeholder/600/400',
-    technologies: ['React', 'Node.js', 'Shopify API', 'MongoDB', 'Polaris', 'GraphQL', 'Webhook'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: true,
-  },
-  {
-    id: '4',
-    title: 'Headless Commerce Solution',
-    description: 'Modern headless ecommerce platform using Shopify as backend with Next.js frontend for ultimate performance and flexibility. Features custom checkout experience, subscription management, advanced SEO optimization, and progressive web app capabilities with offline support.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Next.js', 'Shopify Storefront API', 'GraphQL', 'Tailwind CSS', 'PWA', 'TypeScript'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '5',
-    title: 'Multi-Store Management Platform',
-    description: 'Centralized dashboard for managing multiple Shopify stores with unified inventory management, cross-store order processing, consolidated analytics, and automated reporting. Streamlines operations for multi-brand businesses with role-based access control and custom workflow automation.',
-    image: '/api/placeholder/600/400',
-    technologies: ['React', 'Shopify Admin API', 'Node.js', 'PostgreSQL', 'Redis', 'JWT'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '6',
-    title: 'Shopify Migration Service',
-    description: 'Complete store migration from legacy platforms (Magento, WooCommerce) to Shopify Plus with zero downtime strategy. Includes comprehensive data migration, theme recreation, custom functionality preservation, SEO maintenance, and post-migration optimization and training.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify Plus', 'Data Migration Tools', 'Liquid', 'Python', 'API Integration'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '7',
-    title: 'Shopify POS Integration',
-    description: 'Custom point-of-sale integration connecting physical retail locations with Shopify online store. Features real-time inventory sync, unified customer profiles, loyalty program integration, and comprehensive reporting across all sales channels with offline capability.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify POS', 'REST API', 'React Native', 'SQLite', 'Sync Engine'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '8',
-    title: 'Subscription Commerce Platform',
-    description: 'Advanced subscription ecommerce solution built on Shopify with custom subscription management, flexible billing cycles, customer portal, dunning management, and comprehensive analytics. Integrates with popular subscription apps and payment gateways.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify', 'Subscription APIs', 'Liquid', 'JavaScript', 'Stripe', 'Customer Portal'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '9',
-    title: 'B2B Wholesale Portal',
-    description: 'Comprehensive B2B wholesale solution on Shopify Plus with tiered pricing, bulk ordering, quote management, credit terms, and dedicated customer accounts. Features advanced user roles, approval workflows, and integration with accounting systems.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify Plus', 'Shopify Scripts', 'B2B APIs', 'Liquid', 'Custom Checkout'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '10',
-    title: 'Shopify Performance Optimization',
-    description: 'Comprehensive performance optimization project improving site speed by 60% and conversion rates by 25%. Includes code optimization, image compression, lazy loading implementation, and Core Web Vitals improvements with ongoing monitoring and maintenance.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify', 'Performance Optimization', 'Liquid', 'JavaScript', 'Web Vitals'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-];
+import { projects } from '@/data/projects';
 
 const categories = ['All', 'Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations', 'Migrations'];
 
@@ -248,7 +145,7 @@ export default function ProjectsPage() {
                   whileHover={{ y: -5 }}
                 >
                   {/* Project Image */}
-                  <div className="relative overflow-hidden h-48 bg-gradient-to-br from-blue-400 to-purple-600">
+                  <div className="relative overflow-hidden h-64 bg-gradient-to-br from-blue-400 to-purple-600">
                     {project.featured && (
                       <div className="absolute top-3 right-3 z-10">
                         <span className="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">
@@ -297,7 +194,7 @@ export default function ProjectsPage() {
                     </p>
                     
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-1 mb-4">
+                    {/* <div className="flex flex-wrap gap-1 mb-4">
                       {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
@@ -311,10 +208,10 @@ export default function ProjectsPage() {
                           +{project.technologies.length - 4}
                         </span>
                       )}
-                    </div>
+                    </div> */}
 
                     {/* Action Buttons */}
-                    <div className="flex space-x-2">
+                    {/* <div className="flex space-x-2">
                       <motion.a
                         href={project.demoUrl}
                         target="_blank"
@@ -335,7 +232,7 @@ export default function ProjectsPage() {
                       >
                         View Code
                       </motion.a>
-                    </div>
+                    </div> */}
                   </div>
                 </motion.div>
               ))}

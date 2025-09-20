@@ -4,93 +4,31 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
-import { Project } from '@/types';
+import { projects } from '@/data/projects';
 
-const projects: Project[] = [
-  {
-    id: '1',
-    title: 'Custom Shopify Plus Store',
-    description: 'Enterprise-level Shopify Plus store with custom checkout flow, advanced product configurator, B2B wholesale portal, and multi-currency support. Integrated with ERP systems and custom inventory management.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify Plus', 'Liquid', 'JavaScript', 'Shopify Scripts', 'GraphQL', 'REST API'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Shopify Theme Development',
-    description: 'Custom responsive Shopify theme built from scratch with advanced filtering, quick view functionality, mega menu navigation, and optimized for conversion. Includes dynamic sections and mobile-first design.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify', 'Liquid', 'CSS3', 'JavaScript', 'SCSS', 'Theme Kit'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: true,
-  },
-  {
-    id: '3',
-    title: 'Shopify App Development',
-    description: 'Custom Shopify app for inventory management and automated product recommendations. Features real-time sync, analytics dashboard, and seamless integration with store admin.',
-    image: '/api/placeholder/600/400',
-    technologies: ['React', 'Node.js', 'Shopify API', 'MongoDB', 'Polaris'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '4',
-    title: 'Headless Commerce Solution',
-    description: 'Headless ecommerce platform using Shopify as backend with Next.js frontend. Features custom checkout, subscription management, and advanced SEO optimization.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Next.js', 'Shopify Storefront API', 'GraphQL', 'Tailwind CSS'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '5',
-    title: 'Multi-Store Management',
-    description: 'Central dashboard for managing multiple Shopify stores with unified inventory, order processing, and analytics. Streamlines operations for multi-brand businesses.',
-    image: '/api/placeholder/600/400',
-    technologies: ['React', 'Shopify Admin API', 'Node.js', 'PostgreSQL'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-  {
-    id: '6',
-    title: 'Shopify Migration Service',
-    description: 'Complete store migration from Magento to Shopify Plus, including data migration, theme recreation, and custom functionality preservation. Zero downtime migration strategy.',
-    image: '/api/placeholder/600/400',
-    technologies: ['Shopify Plus', 'Magento', 'Data Migration', 'Liquid', 'PHP'],
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com',
-    featured: false,
-  },
-];
-
-const categories = ['All', 'Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations'];
+const categories = ['Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations', 'Migrations'];
 
 export default function Projects() {
-  const [filter, setFilter] = useState('All');
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [filter, setFilter] = useState('Featured');
+  const [filteredProjects, setFilteredProjects] = useState(projects.filter(project => project.featured));
 
   const handleFilter = (category: string) => {
     setFilter(category);
-    
-    if (category === 'All') {
-      setFilteredProjects(projects);
-    } else if (category === 'Featured') {
+
+    if (category === 'Featured') {
       setFilteredProjects(projects.filter(project => project.featured));
     } else if (category === 'Shopify Plus') {
-      setFilteredProjects(projects.filter(project => 
+      setFilteredProjects(projects.filter(project =>
         project.technologies.some(tech => tech.includes('Shopify Plus'))));
     } else if (category === 'Custom Themes') {
-      setFilteredProjects(projects.filter(project => 
+      setFilteredProjects(projects.filter(project =>
         project.technologies.some(tech => ['Liquid', 'Theme Kit', 'SCSS'].includes(tech))));
     } else if (category === 'Apps & Integrations') {
-      setFilteredProjects(projects.filter(project => 
+      setFilteredProjects(projects.filter(project =>
         project.technologies.some(tech => ['Shopify API', 'GraphQL', 'REST API'].includes(tech))));
+    } else if (category === 'Migrations') {
+      setFilteredProjects(projects.filter(project =>
+        project.technologies.some(tech => ['Data Migration Tools', 'Migration', 'API Integration'].includes(tech))));
     } else {
       setFilteredProjects(projects);
     }
@@ -127,14 +65,14 @@ export default function Projects() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Shopify & Ecommerce Projects
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Here's a showcase of my Shopify and ecommerce development work, from custom themes 
-              to complex Shopify Plus implementations and everything in between.
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+              Showcase of my past work, from custom themes to complex Shopify Plus
+              implementations and everything in between.
             </p>
           </motion.div>
 
@@ -144,11 +82,10 @@ export default function Projects() {
               <motion.button
                 key={category}
                 onClick={() => handleFilter(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  filter === category
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${filter === category
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -172,7 +109,7 @@ export default function Projects() {
                   whileHover={{ y: -10 }}
                 >
                   {/* Project Image */}
-                  <div className="relative overflow-hidden h-48 bg-gradient-to-br from-blue-400 to-purple-600">
+                  <div className="relative overflow-hidden h-64 bg-gradient-to-br from-blue-400 to-purple-600">
                     {project.featured && (
                       <div className="absolute top-4 right-4 z-10">
                         <span className="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">
@@ -219,9 +156,9 @@ export default function Projects() {
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    {/* <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
@@ -230,10 +167,10 @@ export default function Projects() {
                           {tech}
                         </span>
                       ))}
-                    </div>
+                    </div> */}
 
                     {/* Action Buttons */}
-                    <div className="flex space-x-3">
+                    {/* <div className="flex space-x-3">
                       <motion.a
                         href={project.demoUrl}
                         target="_blank"
@@ -254,7 +191,7 @@ export default function Projects() {
                       >
                         View Code
                       </motion.a>
-                    </div>
+                    </div> */}
                   </div>
                 </motion.div>
               ))}
