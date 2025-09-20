@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import { ContactForm } from '@/types';
 import { validateEmail } from '@/lib/utils';
@@ -71,14 +71,19 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@henryyim.com',
-      href: 'mailto:hello@henryyim.com',
+      value: 'anychainx@gmail.com',
+      href: 'mailto:anychainx@gmail.com',
+    },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: '+1 (615) 530-1189',
+      href: 'tel:+16155301189',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Franklin, TN',
-      href: '#',
+      value: 'Franklin, WI',
     },
   ];
 
@@ -86,21 +91,33 @@ export default function ContactPage() {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com',
+      href: 'https://github.com/anychainx',
       color: 'hover:text-gray-900',
     },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com',
-      color: 'hover:text-blue-600',
-    },
+    // {
+    //   icon: Linkedin,
+    //   label: 'LinkedIn',
+    //   href: 'https://linkedin.com',
+    //   color: 'hover:text-blue-600',
+    // },
     {
       icon: Twitter,
       label: 'Twitter',
-      href: 'https://twitter.com',
+      href: 'https://x.com/AnychainX',
       color: 'hover:text-blue-400',
     },
+    {
+      icon: Instagram,
+      label: 'Instagram',
+      href: 'https://instagram.com/anychainx',
+      color: 'hover:text-pink-500',
+    },
+    // {
+    //   icon: Facebook,
+    //   label: 'Facebook',
+    //   href: 'https://facebook.com/anychainx',
+    //   color: 'hover:text-blue-700',
+    // },
   ];
 
   const containerVariants = {
@@ -129,19 +146,18 @@ export default function ContactPage() {
       <Header />
       <main className="flex-grow">
         <div className="min-h-screen bg-white pt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
             
             {/* Hero Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center mb-20"
+              className="text-center mb-10"
             >
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8">
                 Let&apos;s work <span className="text-blue-600">together</span>
               </h1>
-              <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Have any project idea in your mind? Let&apos;s discuss and bring your vision to life.
               </p>
@@ -276,22 +292,35 @@ export default function ContactPage() {
                     <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-2">
                       Project Type
                     </label>
-                    <select
-                      id="project"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                        errors.subject ? 'border-red-300' : 'border-gray-200'
-                      }`}
-                    >
-                      <option value="">Select project type</option>
-                      <option value="Web Design">Web Design</option>
-                      <option value="Mobile App">Mobile App</option>
-                      <option value="Brand Identity">Brand Identity</option>
-                      <option value="UI/UX Design">UI/UX Design</option>
-                      <option value="Other">Other</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="project"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className={`w-full pl-4 pr-12 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none bg-white ${
+                          errors.subject ? 'border-red-300' : 'border-gray-200'
+                        }`}
+                      >
+                        <option value="">Select project type</option>
+                        <option value="Shopify Store Development">Shopify Store Development</option>
+                        <option value="Custom Shopify Theme">Custom Shopify Theme</option>
+                        <option value="Shopify App Development">Shopify App Development</option>
+                        <option value="Ecommerce Migration">Ecommerce Migration</option>
+                        <option value="Shopify Plus Implementation">Shopify Plus Implementation</option>
+                        <option value="Store Optimization">Store Optimization</option>
+                        <option value="Third-party Integrations">Third-party Integrations</option>
+                        <option value="Payment Gateway Setup">Payment Gateway Setup</option>
+                        <option value="SEO & Marketing Setup">SEO & Marketing Setup</option>
+                        <option value="Maintenance & Support">Maintenance & Support</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                     {errors.subject && (
                       <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
                     )}
