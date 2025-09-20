@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, ShoppingCart, Rocket, Users } from 'lucide-react';
+import Image from 'next/image';
+import profilePhoto from '@/assets/images/profile-photo.png'; // Add your photo here
 
 const stats = [
   { label: 'Years Experience', value: '5+', icon: Code2 },
@@ -70,7 +72,7 @@ export default function About() {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Specialized Shopify developer with expertise in building high-converting 
+              Specialized Shopify developer with expertise in building high-converting
               ecommerce stores and custom solutions.
             </p>
           </motion.div>
@@ -80,28 +82,38 @@ export default function About() {
             <motion.div variants={itemVariants} className="space-y-6">
               <div className="relative">
                 <motion.div
-                  className="w-full h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl overflow-hidden"
+                  className="w-full h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl overflow-hidden relative"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
+
+                  <Image
+                    src={profilePhoto}
+                    alt="Henry Yim - Shopify Developer"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+
+                  {/* Placeholder - Remove this when you add your photo */}
                   <div className="w-full h-full flex items-center justify-center text-white text-6xl font-bold">
-                    YN
+                    HY
                   </div>
                 </motion.div>
               </div>
-              
+
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">
                   Hello! I&apos;m a Shopify Expert
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  I specialize in creating high-converting Shopify stores that drive results. With over 5 years 
-                  of experience in ecommerce development, I&apos;ve helped businesses of all sizes build their 
+                  I specialize in creating high-converting Shopify stores that drive results. With over 5 years
+                  of experience in ecommerce development, I&apos;ve helped businesses of all sizes build their
                   online presence and increase their revenue through strategic Shopify implementations.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  From custom theme development to complex Shopify Plus solutions, I focus on creating 
-                  user-friendly, fast, and conversion-optimized stores. I stay up-to-date with the latest 
+                  From custom theme development to complex Shopify Plus solutions, I focus on creating
+                  user-friendly, fast, and conversion-optimized stores. I stay up-to-date with the latest
                   Shopify features, ecommerce trends, and best practices to deliver exceptional results.
                 </p>
               </div>
@@ -112,7 +124,7 @@ export default function About() {
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Experience Timeline
               </h3>
-              
+
               <div className="space-y-6">
                 {experiences.map((exp, index) => (
                   <motion.div
