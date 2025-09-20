@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/data/projects';
 
 const categories = ['Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations', 'Migrations'];
@@ -112,7 +113,7 @@ export default function Projects() {
                   whileHover={{ y: -10 }}
                 >
                   {/* Project Image */}
-                  <div className="relative overflow-hidden h-64 bg-gradient-to-br from-blue-400 to-purple-600">
+                  <div className="relative overflow-hidden h-64">
                     {project.featured && (
                       <div className="absolute top-4 right-4 z-10">
                         <span className="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">
@@ -120,9 +121,13 @@ export default function Projects() {
                         </span>
                       </div>
                     )}
-                    <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">
-                      {project.title.split(' ').map(word => word[0]).join('')}
-                    </div>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                     <motion.div
                       className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center space-x-4"
                       initial={{ opacity: 0 }}
@@ -156,7 +161,7 @@ export default function Projects() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-5">
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
 
@@ -173,7 +178,7 @@ export default function Projects() {
                     </div> */}
 
                     {/* Action Buttons */}
-                    {/* <div className="flex space-x-3">
+                    <div className="flex space-x-3">
                       <motion.a
                         href={project.demoUrl}
                         target="_blank"
@@ -194,7 +199,7 @@ export default function Projects() {
                       >
                         View Code
                       </motion.a>
-                    </div> */}
+                    </div>
                   </div>
                 </motion.div>
               ))}

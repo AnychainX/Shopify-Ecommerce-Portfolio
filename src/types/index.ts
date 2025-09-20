@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string | any; // Can be string URL or imported image object
   technologies: string[];
   demoUrl?: string;
   githubUrl?: string;

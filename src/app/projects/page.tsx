@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowLeft, Filter } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/data/projects';
 
 const categories = ['All', 'Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations', 'Migrations'];
@@ -145,7 +146,7 @@ export default function ProjectsPage() {
                   whileHover={{ y: -5 }}
                 >
                   {/* Project Image */}
-                  <div className="relative overflow-hidden h-64 bg-gradient-to-br from-blue-400 to-purple-600">
+                  <div className="relative overflow-hidden h-64">
                     {project.featured && (
                       <div className="absolute top-3 right-3 z-10">
                         <span className="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">
@@ -153,9 +154,13 @@ export default function ProjectsPage() {
                         </span>
                       </div>
                     )}
-                    <div className="w-full h-full flex items-center justify-center text-white text-3xl font-bold">
-                      {project.title.split(' ').map(word => word[0]).join('')}
-                    </div>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                     <motion.div
                       className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center space-x-4"
                       initial={{ opacity: 0 }}
@@ -189,9 +194,16 @@ export default function ProjectsPage() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-5">
-                      {project.description}
-                    </p>
+                    <div className="group/desc relative">
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                      {/* Hover tooltip for full description */}
+                      <div className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover/desc:opacity-100 transition-opacity duration-300 pointer-events-none z-20 shadow-lg">
+                        <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900"></div>
+                        {project.description}
+                      </div>
+                    </div>
                     
                     {/* Technologies */}
                     {/* <div className="flex flex-wrap gap-1 mb-4">
