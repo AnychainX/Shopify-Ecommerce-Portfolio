@@ -107,14 +107,10 @@ export default function About() {
                   Hello! I&apos;m a Shopify Expert
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  I specialize in creating high-converting Shopify stores that drive results. With over 5 years
-                  of experience in ecommerce development, I&apos;ve helped businesses of all sizes build their
-                  online presence and increase their revenue through strategic Shopify implementations.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  From custom theme development to complex Shopify Plus solutions, I focus on creating
-                  user-friendly, fast, and conversion-optimized stores. I stay up-to-date with the latest
-                  Shopify features, ecommerce trends, and best practices to deliver exceptional results.
+                  I am Henry, a dedicated Shopify expert, I&apos;ve successfully launched and optimized numerous 
+                  online Shopify stores that generate revenue and create exceptional user experiences. As a 
+                  Shopify expert, I focus not only on developing your online store but also on optimizing it for 
+                  speed, technical SEO, and overall performance to maximize revenue and customer lifetime value. 
                 </p>
               </div>
             </motion.div>
