@@ -2,10 +2,23 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, Facebook, ArrowLeft } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram, Facebook, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { ContactForm } from '@/types';
 import { validateEmail } from '@/lib/utils';
+
+// Custom X Logo Component
+const XIcon = ({ size = 20 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactForm>({
@@ -101,10 +114,10 @@ export default function ContactPage() {
     //   color: 'hover:text-blue-600',
     // },
     {
-      icon: Twitter,
-      label: 'Twitter',
+      icon: XIcon,
+      label: 'X',
       href: 'https://x.com/AnychainX',
-      color: 'hover:text-blue-400',
+      color: 'hover:text-gray-900',
     },
     {
       icon: Facebook,
@@ -185,14 +198,14 @@ export default function ContactPage() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16"
             >
               
               {/* Contact Information */}
-              <motion.div variants={itemVariants} className="space-y-12">
+              <motion.div variants={itemVariants} className="space-y-8 lg:space-y-12">
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Get in touch</h2>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 lg:mb-8">Get in touch</h2>
+                  <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 lg:mb-8">
                     I&apos;m always excited to discuss new projects and opportunities. 
                     Whether you have a specific idea in mind or just want to explore possibilities, 
                     I&apos;d love to hear from you.
@@ -203,22 +216,35 @@ export default function ContactPage() {
                   {contactInfo.map((info, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-center space-x-4 group"
+                      className="flex items-center space-x-4"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                      <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                        <info.icon size={20} />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900">{info.label}</div>
+                      {info.href ? (
                         <a
                           href={info.href}
-                          className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                          className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-300 cursor-pointer"
                         >
-                          {info.value}
+                          <info.icon size={20} />
                         </a>
+                      ) : (
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                          <info.icon size={20} />
+                        </div>
+                      )}
+                      <div>
+                        <div className="font-semibold text-gray-900">{info.label}</div>
+                        {info.href ? (
+                          <a
+                            href={info.href}
+                            className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <span className="text-gray-600">{info.value}</span>
+                        )}
                       </div>
                     </motion.div>
                   ))}
@@ -248,9 +274,9 @@ export default function ContactPage() {
               </motion.div>
 
               {/* Contact Form */}
-              <motion.div variants={itemVariants} className="bg-gray-50 rounded-2xl p-8">
+              <motion.div variants={itemVariants} className="bg-gray-50 rounded-2xl p-6 lg:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                         First Name *
