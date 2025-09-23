@@ -1,8 +1,10 @@
+import { StaticImageData } from 'next/image';
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string | any; // Can be string URL or imported image object
+  image: string | StaticImageData; // Can be string URL or imported image object
   technologies: string[];
   demoUrl?: string;
   githubUrl?: string;

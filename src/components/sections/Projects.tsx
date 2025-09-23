@@ -6,16 +6,17 @@ import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects';
+import { Project } from '@/types';
 
 const categories = ['Featured', 'Shopify Plus', 'Custom Themes', 'Apps & Integrations', 'Migrations'];
 
 export default function Projects() {
   const [filter, setFilter] = useState('Featured');
   const [filteredProjects, setFilteredProjects] = useState(projects.filter(project => project.featured));
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleProjectClick = (project: any) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -233,7 +234,7 @@ export default function Projects() {
 
 // Project Modal Component
 interface ProjectModalProps {
-  project: any;
+  project: Project;
   onClose: () => void;
 }
 

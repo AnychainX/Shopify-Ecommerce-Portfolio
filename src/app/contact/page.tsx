@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram, Facebook, ArrowLeft } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Instagram, Facebook, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { ContactForm } from '@/types';
 import { validateEmail } from '@/lib/utils';

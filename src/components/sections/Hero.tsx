@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Download, Github, Linkedin } from 'lucide-react';
-import Link from 'next/link';
+import { ChevronDown, Download } from 'lucide-react';
 import { smoothScroll } from '@/lib/utils';
 
 const roles = [
