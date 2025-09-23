@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
-import Header from '@/components/layout/Header';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, Facebook, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import { ContactForm } from '@/types';
 import { validateEmail } from '@/lib/utils';
 
@@ -107,17 +107,17 @@ export default function ContactPage() {
       color: 'hover:text-blue-400',
     },
     {
+      icon: Facebook,
+      label: 'Facebook',
+      href: 'https://facebook.com/anychainx',
+      color: 'hover:text-blue-700',
+    },
+    {
       icon: Instagram,
       label: 'Instagram',
       href: 'https://instagram.com/anychainx',
       color: 'hover:text-pink-500',
     },
-    // {
-    //   icon: Facebook,
-    //   label: 'Facebook',
-    //   href: 'https://facebook.com/anychainx',
-    //   color: 'hover:text-blue-700',
-    // },
   ];
 
   const containerVariants = {
@@ -143,9 +143,26 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      {/* Header */}
+      <div className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Link 
+                href="/"
+                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 font-bold"
+              >
+                <ArrowLeft size={20} />
+                <span>Back to Home</span>
+              </Link>
+            </div>
+            {/* <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Contact Me</h1> */}
+          </div>
+        </div>
+      </div>
+      
       <main className="flex-grow">
-        <div className="min-h-screen bg-white pt-20">
+        <div className="min-h-screen bg-white pt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
             
             {/* Hero Section */}

@@ -77,7 +77,7 @@ export default function Header() {
                       <Link
                         key={item.name}
                         href="/contact"
-                        className={`px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-600 relative group ${
+                        className={`px-3 py-2 text-base font-bold transition-all duration-300 hover:text-blue-600 relative group ${
                           isScrolled ? 'text-gray-700' : 'text-white/90'
                         }`}
                       >
@@ -97,7 +97,7 @@ export default function Header() {
                     <motion.button
                       key={item.name}
                       onClick={() => handleNavClick(item.href)}
-                      className={`px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-600 relative group ${
+                      className={`px-3 py-2 text-base font-bold transition-all duration-300 hover:text-blue-600 relative group ${
                         isScrolled ? 'text-gray-700' : 'text-white/90'
                       }`}
                       whileHover={{ y: -2 }}
@@ -150,7 +150,7 @@ export default function Header() {
                       <Link
                         key={item.name}
                         href="/contact"
-                        className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-all duration-200"
+                        className="block w-full text-left px-3 py-2 text-lg font-bold text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-all duration-200"
                         onClick={() => setIsOpen(false)}
                       >
                         <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.98 }}>
@@ -163,7 +163,7 @@ export default function Header() {
                     <motion.button
                       key={item.name}
                       onClick={() => handleNavClick(item.href)}
-                      className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-all duration-200"
+                      className="block w-full text-left px-3 py-2 text-lg font-bold text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-all duration-200"
                       whileHover={{ x: 5 }}
                       whileTap={{ scale: 0.98 }}
                     >

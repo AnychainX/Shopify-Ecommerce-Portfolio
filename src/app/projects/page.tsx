@@ -63,7 +63,7 @@ export default function ProjectsPage() {
             <div className="flex items-center space-x-4">
               <Link 
                 href="/"
-                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 font-bold"
               >
                 <ArrowLeft size={20} />
                 <span>Back to Home</span>

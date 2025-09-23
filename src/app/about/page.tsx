@@ -2,15 +2,35 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout } from '@/components/layout';
+import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import { Footer } from '@/components/layout';
 import { About, Skills } from '@/components/sections';
 
 export default function AboutPage() {
   return (
-    <Layout>
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <div className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Link 
+                href="/"
+                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 font-bold"
+              >
+                <ArrowLeft size={20} />
+                <span>Back to Home</span>
+              </Link>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">About Me</h1>
+          </div>
+        </div>
+      </div>
 
-      <section className="bg-white py-10">
-      </section>
+      <main className="flex-grow">
+        <section className="bg-white py-10">
+        </section>
       {/* About Section */}
       <About />
 
@@ -41,6 +61,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </Layout>
+      </main>
+      <Footer />
+    </div>
   );
 }

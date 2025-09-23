@@ -175,7 +175,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Social Links */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="flex justify-center space-x-6 pt-8"
           >
@@ -195,7 +195,7 @@ export default function Hero() {
                 <Icon size={24} />
               </motion.a>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
 

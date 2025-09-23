@@ -75,7 +75,7 @@ export default function AboutHome() {
                 <h3 className="text-2xl font-semibold text-gray-900">
                   Hello! I&apos;m a Shopify Expert
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-justify">
                   I am Henry, a dedicated Shopify expert, I&apos;ve successfully launched and optimized numerous 
                   online Shopify stores that generate revenue and create exceptional user experiences. As a 
                   Shopify expert, I focus not only on developing your online store but also on optimizing it for 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
@@ -120,9 +120,16 @@ export default function Projects() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    y: { duration: 0.15, ease: "easeOut" }
+                  }}
                   className="group bg-white rounded-2xl shadow-xl hover:bg-gray-200 hover:shadow-3xl transition-all duration-300 cursor-pointer"
-                  whileHover={{ y: -10 }}
+                  whileHover={{ 
+                    y: -10,
+                    transition: { duration: 0.15, ease: "easeOut" }
+                  }}
                   onClick={() => handleProjectClick(project)}
                 >
                   {/* Project Image */}
@@ -233,6 +240,36 @@ interface ProjectModalProps {
 function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
+  // Prevent background scroll when scrolling inside modal
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const target = e.target as Element;
+      const modalContent = document.querySelector('.modal-content');
+      
+      // Check if the scroll is happening inside the modal content
+      if (modalContent && modalContent.contains(target)) {
+        // Check if modal content can scroll
+        const canScrollDown = modalContent.scrollTop < modalContent.scrollHeight - modalContent.clientHeight;
+        const canScrollUp = modalContent.scrollTop > 0;
+        
+        // If trying to scroll beyond modal content bounds, allow background scroll
+        if ((e.deltaY > 0 && !canScrollDown) || (e.deltaY < 0 && !canScrollUp)) {
+          return; // Allow background scroll
+        }
+        
+        // Otherwise prevent background scroll
+        e.preventDefault();
+      }
+    };
+    
+    // Add event listener to window to catch all wheel events
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+  
   // Mock additional images - in real implementation, you'd get these from project data
   const projectImages = [
     project.image,
@@ -266,6 +303,11 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
+        onWheel={(e) => {
+          // Prevent wheel events from bubbling to parent (overlay)
+          // This allows modal content to scroll independently
+          e.stopPropagation();
+        }}
       >
         {/* Modal Header with Close Button */}
         <div className="relative">
@@ -410,7 +452,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                View Live Demo
+                Visit Website
               </motion.a>
               <motion.a
                 href={project.githubUrl}
